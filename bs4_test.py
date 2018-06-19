@@ -6,16 +6,15 @@ import urllib2
 import csv
 import json
 
-
-page = requests.get("https://www.gamut.com/c/building-grounds")
+pageurl = raw_input("Enter the required page link to crawled")
+page = requests.get(pageurl)
 soup = BeautifulSoup(page.text,'html.parser')
 
 f = csv.writer(open('sample.csv', 'w'))
 f.writerow(['Name','Link'])
 
-x = soup.find(class_="categories__inner")
 
-x = x.find_all('img')
+x = soup.find_all('img')
 
 
 for i in x:
